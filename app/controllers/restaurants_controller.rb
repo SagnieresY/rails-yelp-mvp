@@ -11,31 +11,37 @@ class RestaurantsController < ApplicationController
     @review = Review.new
   end
 
+  # GET /restaurants/new
   def new
     @restaurant = Restaurant.new
   end
 
-  def create
-    @restaurant = Restaurant.new(default_params)
-    @restaurant.save
-
-    redirect_to restaurants_path
+  # GET /restaurants/1/edit
+  def edit
   end
 
-  def edit
-    set_restaurant
+  # POST /restaurants
+  # POST /restaurants.json
+  def create
+    @restaurant = Restaurant.new(default_params)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def update
     set_restaurant
-    @restaurant.update(default_params)
-
-    redirect_to task_path(@restaurant)
+    if @restaurant.update(restaurant_params)
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
   end
 
   def destroy
     set_restaurant
-
     @restaurant.destroy
 
 
@@ -49,7 +55,10 @@ class RestaurantsController < ApplicationController
   end
 
   def default_params
-    params.require(:restaurant).permit(:name, :address, :rating)
+    params.require(:restaurant).permit(:name, :address, :rating, :category)
   end
 
 end
+
+
+
