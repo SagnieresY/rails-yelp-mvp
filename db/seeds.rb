@@ -14,7 +14,7 @@ Restaurant.destroy_all
 puts 'Creating restaurants...'
 
 5.times do
-  Restaurant.create(name: Faker::Music.instrument, category: ["chinese", "italian", "japanese", "french", "belgian"].sample.capitalize, stars: rand(1..5))
+  Restaurant.create(name: Faker::SiliconValley.app, category: ["chinese", "italian", "japanese", "french", "belgian"].sample.capitalize, stars: rand(1..5))
 end
 
 puts 'Finished!'

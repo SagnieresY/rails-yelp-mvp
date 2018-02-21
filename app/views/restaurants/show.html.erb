@@ -15,5 +15,34 @@
   <%= @restaurant.stars %>
 </p>
 
+
+<p>
+
+  <%= @restaurant.reviews.last.content %>
+  <%= @restaurant.reviews.last.rating %>
+</p>
+
+
+<strong>Reviews</strong>
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurant.reviews.each do |review| %>
+      <tr>
+        <td><%= review.content %></td>
+        <td><%= review.rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Create a Review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
