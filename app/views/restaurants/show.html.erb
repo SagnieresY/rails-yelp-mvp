@@ -46,3 +46,9 @@
 <%= link_to 'Create a Review', new_restaurant_review_path(@restaurant) %> |
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
+
+<h1>New Review</h1>
+
+<%= render 'review_form', review: @review %>
+
+<%= link_to 'Back', restaurants_path %>

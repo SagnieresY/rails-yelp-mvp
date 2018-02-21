@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
 
   def show
     set_restaurant
+    @review = Review.new
   end
 
   def new
@@ -34,7 +35,9 @@ class RestaurantsController < ApplicationController
 
   def destroy
     set_restaurant
+
     @restaurant.destroy
+
 
     redirect_to restaurants_path
   end
